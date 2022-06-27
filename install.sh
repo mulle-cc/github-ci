@@ -1,6 +1,6 @@
 #! /usr/bin/env bash
 
-install_mulle_clang()
+install_mulle_clang_project()
 {
    local provider
    local url
@@ -81,4 +81,4 @@ MULLE_UNAME="${MULLE_UNAME%%_*}"
 MULLE_UNAME="${MULLE_UNAME%64}"
 
 
-install_mulle_clang
+install_mulle_clang_project

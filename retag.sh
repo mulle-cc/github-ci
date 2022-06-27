@@ -1,9 +1,9 @@
 #! /bin/sh
 
-git tag -d v3
-git push github :v3
+git tag -d v4
+git push github :v4
 
-git tag v3 &&
+git tag v4 &&
 git push && 
 git push --tags
 

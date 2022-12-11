@@ -9,7 +9,7 @@ install_mulle_clang_project()
    local rc
 
    provider="github"
-   version="14.0.6.1"
+   version="14.0.6.2"
    repo="mulle-clang-project"
    packagename="mulle-clang"
 

@@ -47,11 +47,16 @@ install_mulle_clang_project()
          lsb_release -a >&2
 
          case "$LSB_RELEASE" in
-            jammy|kinetic|bookworm|22\.*) # broken catthehacker image fix for act
+            # jammy is actually bullseye, not bookworm as documented
+            jammy)
+               codename="bullseye"
+            ;;
+
+            kinetic|bookworm|22\.*) # broken catthehacker image fix for act
                codename="bookworm"
             ;;
 
-            focal|groovy|hirsute|impish|bullseye|21\.*|20\.*) # broken catthehacker image fix for act
+            focal|groovy|hirsute|impish|jammy|bullseye|21\.*|20\.*)
                codename="bullseye"
             ;;
 

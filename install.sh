@@ -38,6 +38,11 @@ install_mulle_clang_project()
       ;;
 
       linux)  
+         if dpkg -s "${packagename}" > /dev/null 2>&1
+         then
+            return
+         fi
+
          LSB_RELEASE="${LSB_RELEASE:-`lsb_release -c -s`}"
          lsb_release -a >&2
 

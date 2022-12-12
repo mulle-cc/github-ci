@@ -86,7 +86,7 @@ install_mulle_clang_project()
    echo "Downloading ${url} ..." >&2
 
    curl -L -O "${url}" &&
-   sudo dpkg --install "${filename}"
+   dpkg --install "${filename}"
 }
 
 

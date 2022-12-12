@@ -38,8 +38,9 @@ install_mulle_clang_project()
       ;;
 
       linux)  
-         set -x
          LSB_RELEASE="${LSB_RELEASE:-`lsb_release -c -s`}"
+         lsb_release -a >&2
+
          case "$LSB_RELEASE" in
             jammy|kinetic|bookworm|22\.*) # broken catthehacker image fix for act
                codename="bookworm"
@@ -58,7 +59,6 @@ install_mulle_clang_project()
                exit 1
             ;;
          esac
-         set +x
       ;;
 
       *)

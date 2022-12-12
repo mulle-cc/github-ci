@@ -95,8 +95,15 @@ install_mulle_clang_project()
 
    echo "Downloading ${url} ..." >&2
 
+   local sudo
+
+   if command -v "sudo" > /dev/null
+   then
+      sudo="sudo"
+   fi
+
    curl -L -O "${url}" &&
-   dpkg --install "${filename}"
+   ${sudo} dpkg --install "${filename}"
 }
 
 

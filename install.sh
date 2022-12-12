@@ -40,7 +40,7 @@ install_mulle_clang_project()
       linux)
          LSB_RELEASE="${LSB_RELEASE:-`lsb_release -c -s`}"
          case "$LSB_RELEASE" in
-            focal|bullseye|22.\*|20\.*) # broken catthehacker image fix for act
+            focal|jammy|bullseye|22.\*|20\.*) # broken catthehacker image fix for act
                codename="bullseye"
             ;;
 

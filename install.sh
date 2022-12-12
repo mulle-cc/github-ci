@@ -2,36 +2,45 @@
 
 install_mulle_clang_project()
 {
-   local provider
-   local url
-   local filename
+   local is_prerelease
    local packagename
-   local rc
+   local provider
+   local repo
+   local version
 
-   provider="github"
-   version="14.0.6.2"
-   repo="mulle-clang-project"
+   is_prerelease='NO'
    packagename="mulle-clang"
+   provider="github"
+   repo="mulle-clang-project"
+   version="14.0.6.2"
+
+   case "${GITHUB_REF}" in
+      */prerelease|*/*-prerelease)
+         is_prerelease='YES'
+      ;;
+   esac
+
+   if [ "${MULLE_HOSTNAME}" = "ci-prerelease" ]
+   then
+      is_prerelease='YES'
+   fi
 
    case "${MULLE_UNAME}" in
       darwin)
-         case "${GITHUB_REF}" in
-            */prerelease|*/*-prerelease)
-               brew install mulle-objc/prerelease/mulle-clang-project
-               return $?
-            ;;
-            
-            *)
-               brew install mulle-objc/software/mulle-clang-project
-               return $?
-            ;;            
-         esac      
+         if [ "${is_prerelease}" = 'YES' ]
+         then
+            brew install mulle-objc/prerelease/mulle-clang-project
+            return $?
+         else
+            brew install mulle-objc/software/mulle-clang-project
+            return $?
+         fi
       ;;
 
       linux)
          LSB_RELEASE="${LSB_RELEASE:-`lsb_release -c -s`}"
          case "$LSB_RELEASE" in
-            focal|bullseye|20\.*) # broken catthehacker image fix for act
+            focal|bullseye|22.\*|20\.*) # broken catthehacker image fix for act
                codename="bullseye"
             ;;
 
@@ -53,13 +62,18 @@ install_mulle_clang_project()
       ;;
    esac
 
-   case "${GITHUB_REF}" in
-      */prerelease|*/*-prerelease)
-         rc="-RC1"  # change at release back to ""
-      ;;
-   esac
+   local rc
+
+   if [ "${is_prerelease}" = 'YES' ]
+   then
+      : # rc="-RC1"  # change at release back to ""
+   fi
+
+   local filename
 
    filename="${packagename}-${version}${rc}-${codename}-amd64.deb"
+
+   local url
 
    case "${provider}" in
       github)

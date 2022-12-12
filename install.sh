@@ -37,15 +37,16 @@ install_mulle_clang_project()
          fi
       ;;
 
-      linux)
+      linux)  
+         set -x
          LSB_RELEASE="${LSB_RELEASE:-`lsb_release -c -s`}"
          case "$LSB_RELEASE" in
-            focal|groovy|hirsute|impish|bullseye|21\.*|20\.*) # broken catthehacker image fix for act
-               codename="bullseye"
+            jammy|kinetic|bookworm|22\.*) # broken catthehacker image fix for act
+               codename="bookworm"
             ;;
 
-            jammy|kinetic|bookworm|22.\*) # broken catthehacker image fix for act
-               codename="bookworm"
+            focal|groovy|hirsute|impish|bullseye|21\.*|20\.*) # broken catthehacker image fix for act
+               codename="bullseye"
             ;;
 
             bionic|buster|18\.*)
@@ -56,8 +57,8 @@ install_mulle_clang_project()
                echo "Unsupported debian/ubuntu release \"${LSB_RELEASE}\"" >&2
                exit 1
             ;;
-
          esac
+         set +x
       ;;
 
       *)

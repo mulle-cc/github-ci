@@ -38,11 +38,6 @@ install_mulle_clang_project()
       ;;
 
       linux)  
-         if dpkg -s "${packagename}" > /dev/null 2>&1
-         then
-            return
-         fi
-
          LSB_RELEASE="${LSB_RELEASE:-`lsb_release -c -s`}"
          lsb_release -a >&2
 
@@ -116,5 +111,14 @@ MULLE_UNAME="`uname | tr '[A-Z]' '[a-z]'`"
 MULLE_UNAME="${MULLE_UNAME%%_*}"
 MULLE_UNAME="${MULLE_UNAME%64}"
 
+
+#
+# images that have mulle-sde already installed, skip...
+#
+if ! `PATH="${HOME}/bin:${PATH}" command -v mulle-clang 2> /dev/null`
+then
+   echo "mulle-clang is already installed" >&2
+   return
+fi
 
 install_mulle_clang_project

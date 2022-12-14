@@ -1,5 +1,7 @@
 #! /usr/bin/env bash
 
+[ "${TRACE}" = 'YES' ] && set -x && : "$0" "$@"
+
 install_mulle_clang_project()
 {
    local is_prerelease
@@ -115,10 +117,10 @@ MULLE_UNAME="${MULLE_UNAME%64}"
 #
 # images that have mulle-sde already installed, skip...
 #
-if ! `PATH="${HOME}/bin:${PATH}" command -v mulle-clang 2> /dev/null`
+if PATH="${HOME}/bin:${PATH}" command -v mulle-clang 2> /dev/null
 then
    echo "mulle-clang is already installed" >&2
-   return
+   exit 0
 fi
 
 install_mulle_clang_project

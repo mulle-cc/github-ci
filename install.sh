@@ -117,7 +117,7 @@ MULLE_UNAME="${MULLE_UNAME%64}"
 #
 # images that have mulle-sde already installed, skip...
 #
-if PATH="${HOME}/bin:${PATH}" command -v mulle-clang 2> /dev/null
+if PATH="${HOME}/bin:${PATH}" command -v mulle-clang > /dev/null
 then
    echo "mulle-clang is already installed" >&2
    exit 0

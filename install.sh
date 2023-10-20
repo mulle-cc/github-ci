@@ -49,7 +49,7 @@ install_mulle_clang_project()
                codename="bullseye"
             ;;
 
-            kinetic|bookworm|22\.*) # broken catthehacker image fix for act
+            mantic|lunar|kinetic|bookworm|22\.*) # broken catthehacker image fix for act
                codename="bookworm"
             ;;
 

@@ -2,7 +2,7 @@
 
 
 git add -u &&
-git commit -m "fix" || exit 1
+git commit -m "${1:-fix}" || exit 1
 
 git tag -d v4
 git push origin :v4

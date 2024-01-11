@@ -14,7 +14,6 @@ install_mulle_clang_project()
    packagename="mulle-clang"
    provider="github"
    repo="mulle-clang-project"
-   version="14.0.6.2"
 
    case "${GITHUB_REF}" in
       */prerelease|*/*-prerelease)
@@ -44,21 +43,20 @@ install_mulle_clang_project()
          lsb_release -a >&2
 
          case "$LSB_RELEASE" in
-            # jammy is actually bullseye, not bookworm as documented
-            jammy)
-               codename="bullseye"
-            ;;
-
-            mantic|lunar|kinetic|bookworm|22\.*) # broken catthehacker image fix for act
+            noble|mantic|lunar|kinetic|bookworm|22\.*) # broken catthehacker image fix for act
                codename="bookworm"
+               version="17.0.6.0" # default
             ;;
 
+            # jammy is actually bullseye, not bookworm as documented
             focal|groovy|hirsute|impish|jammy|bullseye|21\.*|20\.*)
                codename="bullseye"
+               version="14.0.6.2"
             ;;
 
             bionic|buster|18\.*)
                codename="buster"
+               version="14.0.6.2"
             ;;
 
             *)
@@ -82,8 +80,10 @@ install_mulle_clang_project()
    fi
 
    local filename
+   local architecture
 
-   filename="${packagename}-${version}${rc}-${codename}-amd64.deb"
+   architecture="`dpkg --print-architecture`"
+   filename="${packagename}-${version}${rc}-${codename}-${architecture}.deb"
 
    local url
 

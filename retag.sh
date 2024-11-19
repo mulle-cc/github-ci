@@ -1,9 +1,9 @@
 #! /bin/sh
 
-git tag -d v4
-git push origin :v4
+git tag -d v5
+git push origin :v5
 
-git tag v4 &&
+git tag v5 &&
 git push && 
 git push --tags
 

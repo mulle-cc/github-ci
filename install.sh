@@ -42,26 +42,12 @@ install_mulle_clang_project()
          LSB_RELEASE="${LSB_RELEASE:-`lsb_release -c -s`}"
          lsb_release -a >&2
 
+         # we just use this now for everything fail elsewhere
+         # if you need other versions, use v4 of this script
          case "$LSB_RELEASE" in
-            plucky|oracular|noble|mantic|lunar|trixie|forky|kinetic|bookworm|jessie|22\.*) # broken catthehacker image fix for act
+            *)
                codename="bookworm"
                version="17.0.6.2" # default
-            ;;
-
-            # jammy is actually bullseye, not bookworm as documented
-            focal|groovy|hirsute|impish|jammy|bullseye|21\.*|20\.*)
-               codename="bullseye"
-               version="14.0.6.2"
-            ;;
-
-            bionic|buster|18\.*)
-               codename="buster"
-               version="14.0.6.2"
-            ;;
-
-            *)
-               echo "Unsupported debian/ubuntu release \"${LSB_RELEASE}\"" >&2
-               exit 1
             ;;
          esac
       ;;

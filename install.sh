@@ -45,7 +45,7 @@ install_mulle_clang_project()
          case "$LSB_RELEASE" in
             plucky|oracular|noble|mantic|lunar|kinetic|trixie|forky|bookworm|2[432]\.*) # broken catthehacker image fix for act
                codename="bookworm"
-               version="17.0.6.3" # default
+               version="21.1.8.1" # default
             ;;
 
 #            # jammy is actually bullseye, not bookworm as documented

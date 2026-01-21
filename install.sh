@@ -43,7 +43,12 @@ install_mulle_clang_project()
          lsb_release -a >&2
 
          case "$LSB_RELEASE" in
-            plucky|oracular|noble|mantic|lunar|kinetic|trixie|forky|bookworm|2[432]\.*) # broken catthehacker image fix for act
+            questing|plucky|oracular|noble|trixie|2[456]\.*)
+               codename="trixie"
+               version="21.1.8.1" # default
+            ;;
+
+            noble|mantic|lunar|kinetic|forky|bookworm|2[321]\.*) # broken catthehacker image fix for act
                codename="bookworm"
                version="21.1.8.1" # default
             ;;

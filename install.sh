@@ -45,12 +45,12 @@ install_mulle_clang_project()
          case "$LSB_RELEASE" in
             questing|plucky|oracular|noble|trixie|2[456]\.*)
                codename="trixie"
-               version="21.1.8.1" # default
+               version="21.1.8.5" # default
             ;;
 
             noble|mantic|lunar|kinetic|forky|bookworm|2[321]\.*) # broken catthehacker image fix for act
                codename="bookworm"
-               version="21.1.8.1" # default
+               version="21.1.8.5" # default
             ;;
 
 #            # jammy is actually bullseye, not bookworm as documented

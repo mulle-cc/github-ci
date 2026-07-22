@@ -110,7 +110,9 @@ install_mulle_clang_project()
    fi
 
    curl -L -O "${url}" &&
-   ${sudo} dpkg --install "${filename}"
+   ${sudo} dpkg --install "${filename}" &&
+   ${sudo} ln -sfn "${version}" "/opt/mulle-clang-project/latest" &&
+   ${sudo} ln -sfn "/opt/mulle-clang-project/latest/bin/mulle-clang" "/usr/local/bin/mulle-clang"
 }
 
 

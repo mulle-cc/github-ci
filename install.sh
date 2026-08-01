@@ -110,7 +110,7 @@ install_mulle_clang_project()
    fi
 
    curl -L -O "${url}" &&
-   ${sudo} dpkg --install "${filename}"
+   ${sudo} dpkg --install "${filename}" || ${sudo} apt-get install -f -y
 }
 
 

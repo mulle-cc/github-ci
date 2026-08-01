@@ -43,7 +43,7 @@ install_mulle_clang_project()
          lsb_release -a >&2
 
          case "$LSB_RELEASE" in
-            questing|plucky|oracular|noble|trixie|2[456]\.*)
+            resolute|questing|plucky|oracular|noble|trixie|2[456]\.*)
                codename="trixie"
                version="22.1.2.6" # default
             ;;

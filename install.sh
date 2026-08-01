@@ -110,6 +110,8 @@ install_mulle_clang_project()
    fi
 
    curl -L -O "${url}" &&
+   ${sudo} apt-get update -qq &&
+   ${sudo} apt-get install -y -qq libxml2 &&
    ${sudo} dpkg --install "${filename}" || ${sudo} apt-get install -f -y
 }
 

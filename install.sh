@@ -43,12 +43,17 @@ install_mulle_clang_project()
          lsb_release -a >&2
 
          case "$LSB_RELEASE" in
-            resolute|questing|plucky|oracular|noble|trixie|2[456]\.*)
+            resolute|questing|stonking|forky|2[67]\.*)
+               codename="forky"
+               version="22.1.2.6" # default (no sanitizers, linux/scc.h removed)
+            ;;
+
+            plucky|noble|trixie|24\.*)
                codename="trixie"
                version="22.1.2.6" # default
             ;;
 
-            noble|mantic|lunar|kinetic|forky|bookworm|2[321]\.*) # broken catthehacker image fix for act
+            oracular|mantic|lunar|kinetic|jammy|bookworm|2[321]\.*)
                codename="bookworm"
                version="22.1.2.6" # default
             ;;
@@ -110,9 +115,8 @@ install_mulle_clang_project()
    fi
 
    curl -L -O "${url}" &&
-   ${sudo} apt-get update -qq &&
-   ${sudo} apt-get install -y -qq libxml2 &&
-   ${sudo} dpkg --install "${filename}" || ${sudo} apt-get install -f -y
+   ${sudo} dpkg --install "${filename}" || \
+   ( ${sudo} apt-get update -qq && ${sudo} apt-get install -f -y )
 }
 
 

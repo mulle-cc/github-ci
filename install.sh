@@ -45,17 +45,17 @@ install_mulle_clang_project()
          case "$LSB_RELEASE" in
             resolute|questing|stonking|forky|2[67]\.*)
                codename="forky"
-               version="22.1.8.7" # default (no sanitizers, linux/scc.h removed)
+               version="22.1.8.8" # default (no sanitizers, linux/scc.h removed)
             ;;
 
             plucky|noble|trixie|24\.*)
                codename="trixie"
-               version="22.1.8.7" # default
+               version="22.1.8.8" # default
             ;;
 
             oracular|mantic|lunar|kinetic|jammy|bookworm|2[321]\.*)
                codename="bookworm"
-               version="22.1.8.7" # default
+               version="22.1.8.8" # default
             ;;
 
 #            # jammy is actually bullseye, not bookworm as documented
